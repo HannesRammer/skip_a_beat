@@ -1,0 +1,36 @@
+{
+  "name": "fluxfm playlists",
+  "description": "skip the borring beginning and end of electronic songs that are longer than 6 minutes, will automatically play from 01:00 till 05:00 and then go to the next song",
+  "version": "0.1.0",
+  "version_name": "0.1.0 beta",
+  "browser_action": {
+    "default_icon": "icon1.png",
+    "default_title": "skip a beat"
+  },
+  "permissions": [
+    "http://*.youtube.*/*",
+    "https://*.youtube.*/*",
+    "webRequest",
+    "webRequestBlocking",
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.youtube.*/*",
+        "https://*.youtube.*/*"
+      ],
+      "js": [
+        "json_inject.js"
+      ]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "manifest_version": 2
+}
